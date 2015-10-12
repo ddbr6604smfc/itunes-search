@@ -15,7 +15,7 @@
     "start": "npm run compile:watch"
   },
   "dependencies": {
-    "isomorphic-fetch": "^2.1.1",
+    "jsonp-p": "^1.0.1",
     "react": "^0.14.0",
     "react-dom": "^0.14.0"
   },
