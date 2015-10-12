@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import jsonp from 'jsonp-p';
 
 const search = query =>
@@ -26,6 +27,9 @@ export default class App extends Component {
         this.setState({ results });
       });
     }
+
+    const input = ReactDOM.findDOMNode(this.refs.search);
+    input.blur();
   }
 
   onChange = (event) => {
@@ -39,14 +43,18 @@ export default class App extends Component {
 
     return (
       <div>
-        <form onSubmit={this.onSubmit}>
+        <form action="" onSubmit={this.onSubmit}>
           <input
-            type="text"
-            placeholder="search"
+            autoCapitalize="off"
+            autoCorrect="off"
+            autoComplete="off"
+            spellCheck="false"
+            type="search"
+            ref="search"
+            placeholder="Search iTunes"
             value={query}
             onChange={this.onChange}
           />
-          <input type="submit" value="Search" />
         </form>
 
         <h1>Search results for {query}:</h1>
