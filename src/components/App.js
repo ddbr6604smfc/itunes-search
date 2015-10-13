@@ -18,8 +18,6 @@ export default class App extends Component {
   }
 
   onSearch = (query) => {
-    event.preventDefault();
-
     this.props.iTunes.search(query).then(results => {
       this.setState({ results });
     });
