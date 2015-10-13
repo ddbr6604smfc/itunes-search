@@ -1,13 +1,14 @@
-import React, { Component} from 'react';
-import jsonp from 'jsonp-p';
+import React, { Component, PropTypes } from 'react';
 import Search from './Search';
 import Result from './Result';
 
-const search = query =>
-  jsonp(`https://itunes.apple.com/search?media=music&entity=song&limit=20&term=${query}`)
-    .then(response => response.results);
-
 export default class App extends Component {
+  static propTypes = {
+    iTunes: PropTypes.shape({
+      search: PropTypes.func.isRequired,
+    }).isRequired,
+  };
+
   constructor(props) {
     super(props);
 
@@ -19,7 +20,7 @@ export default class App extends Component {
   onSearch = (query) => {
     event.preventDefault();
 
-    search(query).then(results => {
+    this.props.iTunes.search(query).then(results => {
       this.setState({ results });
     });
   }
