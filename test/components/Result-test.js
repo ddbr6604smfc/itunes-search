@@ -21,7 +21,8 @@ describe('Result component', () => {
     const output = renderer.getRenderOutput();
     expect(output.type).toBe('div');
 
-    const [ artwork, trackName, trackInformation ] = output.props.children;
+    const [ artwork, body ] = output.props.children;
+    const [ trackName, trackInformation ] = body.props.children;
     expect(artwork.props.src).toEqual(props.artworkUrl100);
     expect(trackName.props.children).toEqual(props.trackName);
     expect(trackInformation.props.children).toContain('Drake & Future');

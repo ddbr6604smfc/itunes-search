@@ -24,10 +24,16 @@ export default class App extends Component {
   }
 
   render() {
+    const resultsListStyle = {
+      margin: '0',
+      padding: '0 15px',
+      listStyle: 'none',
+    };
+
     return (
       <div>
         <Search onSearch={this.onSearch} />
-        <ul>
+        <ul style={resultsListStyle}>
           {
             this.state.results.map(result =>
               <li key={result.trackId}>

@@ -11,11 +11,48 @@ export default class Result extends Component {
   render() {
     const { artworkUrl100, trackName, artistName, collectionName } = this.props;
 
+    const containerStyle = {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '10px 0',
+      borderBottom: '1px solid #E1E1E1',
+    };
+
+    const artworkStyle = {
+      width: '60px',
+      marginRight: '10px',
+    };
+
+    const bodyStyle = {
+      flex: '1',
+    };
+
+    const textStyle = {
+      margin: '0',
+      width: '90%',
+      overflow: 'hidden',
+      textOverflow: 'ellipsis',
+      whiteSpace: 'nowrap',
+    };
+
+    const titleStyle = {
+      ...textStyle,
+      fontSize: '0.95em',
+    };
+
+    const infoStyle = {
+      ...textStyle,
+      color: 'gray',
+      fontSize: '0.78em',
+    };
+
     return (
-      <div>
-        <img src={artworkUrl100} />
-        <p>{trackName}</p>
-        <p>{artistName} - {collectionName}</p>
+      <div style={containerStyle}>
+        <img src={artworkUrl100} style={artworkStyle} />
+        <div style={bodyStyle}>
+          <p style={titleStyle}>{trackName}</p>
+          <p style={infoStyle}>{artistName} - {collectionName}</p>
+        </div>
       </div>
     );
   }
