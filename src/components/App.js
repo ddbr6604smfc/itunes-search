@@ -4,26 +4,12 @@ import Result from './Result';
 
 export default class App extends Component {
   static propTypes = {
-    iTunes: PropTypes.shape({
-      search: PropTypes.func.isRequired,
-    }).isRequired,
+    search: PropTypes.func.isRequired,
+    results: PropTypes.array.isRequired,
   };
-
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      results: [],
-    };
-  }
-
-  onSearch = (query) => {
-    this.props.iTunes.search(query).then(results => {
-      this.setState({ results });
-    });
-  }
-
   render() {
+    const { search, results } = this.props;
+
     const resultsListStyle = {
       margin: '0',
       padding: '0 15px',
@@ -32,10 +18,10 @@ export default class App extends Component {
 
     return (
       <div>
-        <Search onSearch={this.onSearch} />
+        <Search onSearch={search} />
         <ul style={resultsListStyle}>
           {
-            this.state.results.map(result =>
+            results.map(result =>
               <li key={result.trackId}>
                 <Result {...result} />
               </li>
