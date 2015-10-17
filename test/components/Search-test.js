@@ -2,12 +2,9 @@ import expect from 'expect';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import jsdomReact from '../helpers/jsdomReact';
 import Search from '../../src/components/Search';
 
 describe('Search component', () => {
-  jsdomReact();
-
   it('should render correctly', () => {
     const props = {
       onSearch: expect.createSpy(),

@@ -1,12 +1,9 @@
 import expect from 'expect';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import jsdomReact from '../helpers/jsdomReact';
 import AppContainer from '../../src/containers/AppContainer';
 
 describe('App container', () => {
-  jsdomReact();
-
   it('should receive new results after a search', (done) => {
     const props = {
       search: () => Promise.resolve([1, 2, 3]),

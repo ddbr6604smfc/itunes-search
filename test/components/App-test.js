@@ -1,14 +1,11 @@
 import expect from 'expect';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import jsdomReact from '../helpers/jsdomReact';
 import App from '../../src/components/App';
 import Search from '../../src/components/Search';
 import Result from '../../src/components/Result';
 
 describe('App component', () => {
-  jsdomReact();
-
   it('should render correctly', () => {
     const props = {
       search: () => Promise.resolve([]),
