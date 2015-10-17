@@ -1,7 +1,7 @@
 import 'babel-core/polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { search } from './iTunes';
+import API from './API';
 import AppContainer from './containers/AppContainer';
 
-ReactDOM.render(<AppContainer search={search} />, document.getElementById('root'));
+ReactDOM.render(<AppContainer { ...API } />, document.getElementById('root'));
