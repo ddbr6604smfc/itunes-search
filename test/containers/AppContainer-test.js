@@ -3,19 +3,31 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import AppContainer from '../../src/containers/AppContainer';
 
+function setup() {
+  const props = {
+    API: {
+      search: expect.createSpy().andReturn(Promise.resolve([1, 2, 3])),
+    },
+  };
+
+  const renderer = TestUtils.createRenderer();
+  renderer.render(<AppContainer { ...props } />);
+
+  const output = renderer.getRenderOutput();
+
+  return {
+    props,
+    renderer,
+    output,
+  };
+}
+
 describe('App container', () => {
-  it('should receive new results after a search', (done) => {
-    const API = {
-      search: () => Promise.resolve([1, 2, 3]),
-    };
+  it('should search', (done) => {
+    const { props, output } = setup();
 
-    const renderer = TestUtils.createRenderer();
-    renderer.render(<AppContainer API={API} />);
-
-    const output = renderer.getRenderOutput();
-    output.props.search().then(() => {
-      const updatedOutput = renderer.getRenderOutput();
-      expect(updatedOutput.props.results.length).toBe(3);
+    output.props.search('future').then(() => {
+      expect(props.API.search.calls[0].arguments[0]).toBe('future');
       done();
     });
   });
