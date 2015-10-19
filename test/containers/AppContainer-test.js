@@ -5,12 +5,12 @@ import AppContainer from '../../src/containers/AppContainer';
 
 describe('App container', () => {
   it('should receive new results after a search', (done) => {
-    const props = {
+    const API = {
       search: () => Promise.resolve([1, 2, 3]),
     };
 
     const renderer = TestUtils.createRenderer();
-    renderer.render(<AppContainer {...props} />);
+    renderer.render(<AppContainer API={API} />);
 
     const output = renderer.getRenderOutput();
     output.props.search().then(() => {
