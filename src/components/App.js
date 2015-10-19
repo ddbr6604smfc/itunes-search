@@ -7,6 +7,7 @@ export default class App extends Component {
     search: PropTypes.func.isRequired,
     results: PropTypes.array.isRequired,
   };
+
   render() {
     const { search, results } = this.props;
 

@@ -3,7 +3,9 @@ import App from '../components/App';
 
 export default class AppContainer extends Component {
   static propTypes = {
-    search: PropTypes.func.isRequired,
+    API: PropTypes.shape({
+      search: PropTypes.func.isRequired,
+    }).isRequired,
   };
 
   constructor(props) {
@@ -15,7 +17,7 @@ export default class AppContainer extends Component {
   }
 
   onSearch = (query) => {
-    return this.props.search(query).then(results => {
+    return this.props.API.search(query).then(results => {
       this.setState({ results });
     });
   }

@@ -4,4 +4,4 @@ import ReactDOM from 'react-dom';
 import API from './API';
 import AppContainer from './containers/AppContainer';
 
-ReactDOM.render(<AppContainer { ...API } />, document.getElementById('root'));
+ReactDOM.render(<AppContainer API={API} />, document.getElementById('root'));
